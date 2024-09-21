@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import UnicumLogo from "../../assets/logos/unicum_logo.svg";
 import HandLeft from "../../assets/logos/hand_left.svg";
-import HandSelectedBeginner from "../../assets/logos/Beginner.svg";
+import HandSelectedBeginner from "../../assets/logos/beginner.svg";
 import HandSelectedIntermediate from "../../assets/logos/inter.svg";
 import HandSelectedAdvanced from "../../assets/logos/advanced.svg";
 import HandSelectedElementary from "../../assets/logos/elementary.svg";
