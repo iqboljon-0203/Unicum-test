@@ -1,0 +1,77 @@
+.degree{
+    width: 100%;
+    height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.degree_link{
+    display: block;
+    margin-bottom: 20px;
+}
+.degree_logo{
+    display: block;
+    margin: 0 auto;
+    width: 140.1px;
+    height: 35px;
+}
+
+.degree_title{
+    font-family: Gilroy;
+font-size: 36px;
+font-weight: 700;
+line-height: 32.4px;
+text-align: center;
+
+    color: #040404;
+
+    margin-bottom: 15px;
+}
+.degree_text{
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+    font-family: Gilroy;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+color: #989898;
+text-align: center;
+    margin-bottom: 20px;
+}
+.degree_list{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.degree_item{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+padding: 10px 10px 10px 20px;
+gap: 0px;
+border-radius: 200px;
+opacity: 0px;
+background-color: #EFEFEF;
+margin-bottom: 15px;
+}
+.degree_button{
+    width: 100%;
+padding: 20px 60px 20px 60px;
+gap: 10px;
+border-radius: 200px;
+opacity: 0px;
+background-color:  #FFD648;
+border: none;
+font-family: Gilroy;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: center;
+color: #040404;
+
+display: block;
+margin: 0 auto;
+}
+.degree_button:hover{
+    background-color: #FFE488;
+;
+}
