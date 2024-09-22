@@ -14,7 +14,7 @@ const HomePage = () => {
               другого уровня?</h1>
             <p className="offer_text">Мы можем предложить вам пройти тест на более сложный или более легкий уровень</p>
             <Link to="/degree"><button className="offer_next_button">Да, хочу</button></Link>
-            <Link><button onClick={()=>{window.close()}} className="offer_prev_button">Нет, спасибо</button></Link>
+            <Link to="https://t.me/unicum_academy_bot?start=reload"><button className="offer_prev_button">Нет, спасибо</button></Link>
       </div>
     </div>
   )

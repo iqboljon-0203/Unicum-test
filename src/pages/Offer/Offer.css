@@ -5,7 +5,7 @@
 }
 .offer_link{
     display: block;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 .offer_logo{
     display: block;
@@ -18,7 +18,7 @@
     display: block;
     height: 260px;
     margin: 0 auto;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
 }
 .offer_title{
     font-family: Gilroy;
@@ -41,7 +41,7 @@ font-weight: 400;
 line-height: 19.2px;
 color: #989898;
 text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 .offer_next_button{
     width: 100%;
