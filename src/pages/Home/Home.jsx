@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 const HomePage = () => {
   const [data, setData] = useState([]);
   const location = useLocation();
+  console.log(location);
   
   const telegramId = new URLSearchParams(location.search).get('telegramId');
   

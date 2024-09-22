@@ -3,10 +3,13 @@ import "./Result.css";
 import UnicumLogo from "../../assets/logos/unicum_logo.svg";
 import CupImage from "../../assets/logos/cup.svg";
 import Confetti from "react-confetti";
+import { useState } from "react";
 const ResultPage = () => {
+  const [showConfetti, setShowConfetti] = useState(true);
   return (
     <div className="result">
       <div className="container">
+            {showConfetti && <Confetti />}
             <Link className="result_link" to="/">
                 <img className="result_logo" src={UnicumLogo} alt="Unicum logo" />
             </Link>
@@ -31,7 +34,7 @@ const ResultPage = () => {
                   ответов</p>
               </li>
             </ul>
-            <Link to="/offer"><button className="result_button">Завершить тест</button></Link>
+            <Link to="/offer"><button onClick={() => setShowConfetti(false)} className="result_button">Завершить тест</button></Link>
       </div>
     </div>
   )
