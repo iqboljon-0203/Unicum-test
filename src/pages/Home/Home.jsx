@@ -13,7 +13,7 @@ const HomePage = () => {
      useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://api.unicumacademy.uz/api/v1/users/levels/bot-user/?telegramId=${telegramId}`);
+                const response = await fetch(`https://api.unicumacademy.uz/api/v1/users/levels/bot-user/?telegramId=${telegramId}`);
                 const result = await response.json();
                 setData(result);
             } catch (error) {

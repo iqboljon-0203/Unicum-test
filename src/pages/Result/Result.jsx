@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Result.css";
 import UnicumLogo from "../../assets/logos/unicum_logo.svg";
 import CupImage from "../../assets/logos/cup.svg";
+import Confetti from "react-confetti";
 const ResultPage = () => {
   return (
     <div className="result">
