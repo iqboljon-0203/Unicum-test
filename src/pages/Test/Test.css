@@ -33,6 +33,9 @@ margin-bottom: 30px;
     margin-bottom: 30px;
 }
 .test_item{
+    display: block;
+    width: 100%;
+    border: none;
  display: flex;
  align-items: center;
 
@@ -43,6 +46,32 @@ opacity: 0px;
 
 background-color: #EFEFEF;
 margin-bottom: 15px;
+}
+.correct{
+    font-weight: bold;
+    color: #FFFFFF;
+
+    background-color:#12D700;
+
+}
+.incorrect{
+    font-weight: bold;
+    background-color:#F80000;
+    color: #FFFFFF;
+
+}
+.nonSelectedCorrect{
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color:#12D700;
+}
+.test_label{
+    font-family: Gilroy;
+font-size: 16px;
+font-weight: 400;
+line-height: 19.2px;
+text-align: center;
+
 }
 .test_img{
     margin-right: 15px;
@@ -59,7 +88,7 @@ background-color:  #FFD648;
 border: none;
 font-family: Gilroy;
 font-size: 16px;
-font-weight: 400;
+font-weight: 600;
 line-height: 19.2px;
 text-align: center;
 color: #040404;
@@ -67,31 +96,12 @@ margin-bottom: 20px;
 
 
 }
-.test_prev_button{
-    width: 100%;
-padding: 20px 60px 20px 60px;
-gap: 10px;
-border-radius: 200px;
-opacity: 0px;
-background-color:  #EFEFEF;
-border: none;
-font-family: Gilroy;
-font-size: 16px;
-font-weight: 400;
-line-height: 19.2px;
-text-align: center;
-color: #040404;
-display: block;
-margin: 0 auto;
-}
+
 .test_next_button:hover{
     background-color: #FFE488;
 
 }
-.test_prev_button:hover{
-    background-color: #D3D3D3;
 
-}
 .progress-bar-container {
   width: 100%;
   background-color: #e0e0e0;

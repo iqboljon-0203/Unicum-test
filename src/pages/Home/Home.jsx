@@ -2,30 +2,20 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import UnicumLogo from "../../assets/logos/unicum_logo.svg";
 import HomeImage from "../../assets/images/home_image.png";
-import { useState,useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { setTelegramId } from "../../features/telegramId/telegramIdSlice";
 const HomePage = () => {
-  const [data, setData] = useState([]);
-  const location = useLocation();
-  console.log(location);
+  const dispatch=useDispatch();
   
-  const telegramId = new URLSearchParams(location.search).get('telegramId');
-  
-     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`https://api.unicumacademy.uz/api/v1/users/levels/bot-user/?telegramId=${telegramId}`);
-                const result = await response.json();
-                setData(result);
-            } catch (error) {
-                console.log("xato ketdi",error);
-            } 
-        };
-
-        fetchData();
-    }, [telegramId]);
-    console.log(data);
-    
+  useEffect(() => {
+     const searchParams = new URLSearchParams(window.location.search);
+      const idFromUrl = searchParams.get('telegramId');
+      if (idFromUrl) {
+      // Redux state'ga telegramId ni yozish
+      dispatch(setTelegramId(idFromUrl));
+    }
+  },[dispatch])
   return (
     
     <div className="home">
@@ -33,11 +23,7 @@ const HomePage = () => {
             <Link className="home_link" to="/">
                 <img className="home_logo" src={UnicumLogo} alt="Unicum logo" />
             </Link>
-            {data.levels?.map((item)=>{
-              return (
-                <div key={item}>{item}</div>
-              )
-            })}
+           
             <img className="home_img" src={HomeImage} alt="Home Image" />
             <h1 className="home_title">Добро пожаловать
             в наш тест!</h1>

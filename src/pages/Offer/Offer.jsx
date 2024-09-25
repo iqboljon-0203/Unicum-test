@@ -3,6 +3,7 @@ import "./Offer.css";
 import UnicumLogo from "../../assets/logos/unicum_logo.svg";
 import OfferImage from "../../assets/images/offer_image.png";
 const HomePage = () => {
+  
   return (
     <div className="offer">
       <div className="container">
