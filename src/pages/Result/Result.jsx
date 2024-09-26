@@ -4,8 +4,11 @@ import UnicumLogo from '../../assets/logos/unicum_logo.svg';
 import CupImage from '../../assets/logos/cup.svg';
 import Confetti from 'react-confetti';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 const ResultPage = () => {
     const [showConfetti, setShowConfetti] = useState(true);
+    const {data}=useSelector((state)=>state.testAnswer)
+    
     return (
         <div className="result">
             <div className="container">
@@ -27,20 +30,23 @@ const ResultPage = () => {
                 </p>
                 <ul className="result_list">
                     <li className="result_item">
-                        <p className="result_item_number">20</p>
+                        <p className="result_item_number">
+                            {data&&data.testSession.totalQuestions}
+                        </p>
                         <p className="result_item_info">
                             Общее кол-во вопросов
                         </p>
                     </li>
                     <li className="result_item">
                         <p className="result_item_number result_item_number_second">
-                            12
+                            {data&&data.testSession.correctAnswers}
                         </p>
                         <p className="result_item_info">Правильных ответов</p>
                     </li>
                     <li className="result_item">
                         <p className="result_item_number result_item_number_third">
-                            8
+                            {data&&(data.testSession.totalQuestions -
+                                data.testSession.correctAnswers)}
                         </p>
                         <p className="result_item_info">Неправильных ответов</p>
                     </li>

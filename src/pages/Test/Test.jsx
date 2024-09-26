@@ -4,7 +4,6 @@ import TestNumberOne from '../../assets/logos/test1.svg';
 import TestNumberTwo from '../../assets/logos/test2.svg';
 import TestNumberThree from '../../assets/logos/test3.svg';
 import TestNumberFour from '../../assets/logos/test4.svg';
-
 import TestSelectedCorrect from '../../assets/logos/correct.svg';
 import TestSelectedWrong from '../../assets/logos/wrong.svg';
 import { useState, useEffect } from 'react';
@@ -13,39 +12,45 @@ import TestTimer from './TestTimer';
 import { useSelector, useDispatch } from 'react-redux';
 import { postSelectedLevel } from '../../features/postSelectedLevel/postSelectedLevelSlice';
 import { resetTimeLeft } from '../../features/timeLeft/timeLeftSlice';
-import { addTestSessionId, addUserResponse,postTestSessionData } from '../../features/testAnswer/testSessionSlice';
+import { addTestSessionId,addUserResponse,postTestSessionData } from '../../features/testAnswer/testSessionSlice';
 const Test = () => {
-    //navigate
-    const navigate = useNavigate();
-    const dispatchTest = useDispatch();
-    //telegram id
-    const telegramId = useSelector((state) => state.telegram.telegramId);
-    //tanlangan level
+    const navigate = useNavigate(); //navigate
+    const dispatchTest = useDispatch(); // dispatch
+
+    const telegramId = useSelector((state) => state.telegram.telegramId); //telegram id
+
     const clickedLevel = useSelector(
-        (state) => state.clickedLevel.clickedLevel
+        (state) => state.clickedLevel.clickedLevel //tanlangan level
     );
-    
-    // backend data
-    const { data } = useSelector((state) => state.postSelectedLevel);
-    const { testSessionId, userResponses } =
-        useSelector((state) => state.testAnswer);
-    // post zapros
+
+    const { data } = useSelector((state) => state.postSelectedLevel); // backend data
+
     useEffect(() => {
         const requestData = {
             telegramId: telegramId, // Buni kerakli joydan dinamik ravishda olish mumkin
             level: clickedLevel,
         };
-        dispatchTest(addTestSessionId(data.testSesionId));        
-        dispatchTest(postSelectedLevel(requestData));
-        
-    }, [telegramId,dispatchTest,clickedLevel]);
+        dispatchTest(postSelectedLevel(requestData)); // post zapros
+    }, [telegramId, dispatchTest, clickedLevel]);
+    if(data){
+        dispatchTest(addTestSessionId(data.testSessionId));
+    }
+    const { testSessionId, userResponses } = useSelector(
+        (state) => state.testAnswer
+    );
     
-    // tanlangan index
-    const [selectedIndex, setSelectedIndex] = useState(null);
-    const handleClick = (index) => {
-        setSelectedIndex(index);
-        
+    const [selectedIndex, setSelectedIndex] = useState(null); // tanlangan index
+    const [selectedOption, setSelectedOption] = useState(null); // tanlangan option
+    const [questionId, setQuestionId] = useState(null);
+    const handleClick = (index, key, questionId) => {
+        setSelectedIndex(index); // clickedfunction
+        setSelectedOption(key);
+        setQuestionId(questionId);
     };
+
+    console.log(data);
+    console.log(questionId,selectedOption);
+    
     
     // option rasmlari
     const images = [
@@ -54,32 +59,55 @@ const Test = () => {
         TestNumberThree,
         TestNumberFour,
     ];
+
     const totalTests = 20; // Umumiy testlar soni
     // testlari stati
     const [currentTest, setCurrentTest] = useState(1); // Hozirgi test raqami
+
+    // test tugaganda
     const handleNextTest = () => {
         if (currentTest < totalTests) {
             setCurrentTest(currentTest + 1);
+            dispatchTest(addUserResponse({ questionId:questionId, answer:selectedOption }));
             dispatchTest(resetTimeLeft());
             setSelectedIndex(null);
-            setDisabled(false)
-        } else {
-            navigate('/result');
+            setDisabled(false);
+        }else if (currentTest === totalTests) {
+            
+          dispatchTest(
+              postTestSessionData({
+                  testSessionId,
+                  userResponses: [...userResponses, { questionId:questionId, answer:selectedOption }],
+              })
+          ); 
+          navigate('/result');  
         }
+         
     };
-
-   const [disabled,setDisabled] = useState(false)
-
-    const handleTimeUp =() => {
+    // buttonDisabled
+    const [disabled, setDisabled] = useState(false);
+    // vaqt tugaganda
+    const handleTimeUp = () => {
         // Agar vaqt tugasa, keyingi testga o‘tamiz yoki test tugaganini ko‘rsatamiz
         if (currentTest < 20) {
             setCurrentTest(currentTest + 1);
+            dispatchTest(addUserResponse({ questionId:questionId, answer:selectedOption }));
             setSelectedIndex(null);
-            setDisabled(false)
-        } else {
-            navigate('/result');
+            setDisabled(false);
+        } else if(currentTest===totalTests){
+            dispatchTest(
+                postTestSessionData({
+                    testSessionId,
+                    userResponses: [
+                        ...userResponses,
+                        { questionId:questionId, answer:selectedOption },
+                    ],
+                })
+            );
+            navigate('/result');  
         }
     };
+    // option rasmlari uchun sanoq
     let count = -1;
     // Progress foizini hisoblaymiz
     const progressPercentage = (currentTest / totalTests) * 100;
@@ -126,7 +154,13 @@ const Test = () => {
                                                 key={index}
                                                 className={`test_item  ${selectedIndex === index && variant.key === 'a' ? 'correct' : selectedIndex === index && variant.key !== 'a' ? 'incorrect' : ''} ${(selectedIndex === 0 || selectedIndex) && variant.key === 'a' ? 'correct' : ''}`}
                                                 onClick={() => {
-                                                    handleClick(index,variant.key);
+                                                    handleClick(
+                                                        index,
+                                                        variant.key,
+                                                        data.questions[
+                                                            currentTest - 1
+                                                        ].questionId
+                                                    );
                                                     setDisabled(true);
                                                 }}
                                                 style={{
@@ -169,7 +203,7 @@ const Test = () => {
                 <Link to={currentTest === totalTests ? '/result' : '/test'}>
                     <button
                         onClick={handleNextTest}
-                        disabled={selectedIndex===null}
+                        disabled={selectedIndex === null}
                         className="test_next_button"
                     >
                         {currentTest === totalTests
@@ -177,7 +211,6 @@ const Test = () => {
                             : 'Следующий вопрос'}
                     </button>
                 </Link>
-                
             </div>
         </div>
     );
