@@ -6,39 +6,25 @@ import TestNumberThree from '../../assets/logos/test3.svg';
 import TestNumberFour from '../../assets/logos/test4.svg';
 import TestSelectedCorrect from '../../assets/logos/correct.svg';
 import TestSelectedWrong from '../../assets/logos/wrong.svg';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TestTimer from './TestTimer';
 import { useSelector, useDispatch } from 'react-redux';
-import { postSelectedLevel } from '../../features/postSelectedLevel/postSelectedLevelSlice';
 import { resetTimeLeft } from '../../features/timeLeft/timeLeftSlice';
 import { addTestSessionId,addUserResponse,postTestSessionData } from '../../features/testAnswer/testSessionSlice';
 const Test = () => {
     const navigate = useNavigate(); //navigate
     const dispatchTest = useDispatch(); // dispatch
-
-    const telegramId = useSelector((state) => state.telegram.telegramId); //telegram id
-
-    const clickedLevel = useSelector(
-        (state) => state.clickedLevel.clickedLevel //tanlangan level
-    );
-
     const { data } = useSelector((state) => state.postSelectedLevel); // backend data
-
-    useEffect(() => {
-        const requestData = {
-            telegramId: telegramId, // Buni kerakli joydan dinamik ravishda olish mumkin
-            level: clickedLevel,
-        };
-        dispatchTest(postSelectedLevel(requestData)); // post zapros
-    }, [telegramId, dispatchTest, clickedLevel]);
     if(data){
         dispatchTest(addTestSessionId(data.testSessionId));
     }
     const { testSessionId, userResponses } = useSelector(
         (state) => state.testAnswer
     );
-    
+    const clickedLevel = useSelector(
+        (state) => state.clickedLevel.clickedLevel //tanlangan level
+    );
     const [selectedIndex, setSelectedIndex] = useState(null); // tanlangan index
     const [selectedOption, setSelectedOption] = useState(null); // tanlangan option
     const [questionId, setQuestionId] = useState(null);
@@ -47,11 +33,6 @@ const Test = () => {
         setSelectedOption(key);
         setQuestionId(questionId);
     };
-
-    console.log(data);
-    console.log(questionId,selectedOption);
-    
-    
     // option rasmlari
     const images = [
         TestNumberOne,
@@ -59,11 +40,9 @@ const Test = () => {
         TestNumberThree,
         TestNumberFour,
     ];
-
     const totalTests = 20; // Umumiy testlar soni
     // testlari stati
     const [currentTest, setCurrentTest] = useState(1); // Hozirgi test raqami
-
     // test tugaganda
     const handleNextTest = () => {
         if (currentTest < totalTests) {
