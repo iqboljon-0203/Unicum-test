@@ -13,29 +13,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import { resetTimeLeft } from '../../features/timeLeft/timeLeftSlice';
 import { addTestSessionId, addUserResponse,postTestSessionData } from '../../features/testAnswer/testSessionSlice';
 const Test = () => {
+    const [currentTest, setCurrentTest] = useState(1); // Hozirgi test raqami
+
     const navigate = useNavigate(); //navigate
     const dispatchTest = useDispatch(); // dispatch
     const { data } = useSelector((state) => state.postSelectedLevel); // backend data
-    if(data){
+    if (data) {
         dispatchTest(addTestSessionId(data.testSessionId));
     }
     const { testSessionId } = useSelector((state) => state.testAnswer);
-    
 
-    const { userResponses } = useSelector(
-        (state) => state.testAnswer
-    );
+    const { userResponses } = useSelector((state) => state.testAnswer);
+
 
     const clickedLevel = useSelector(
         (state) => state.clickedLevel.clickedLevel //tanlangan level
     );
+
     const [selectedIndex, setSelectedIndex] = useState(null); // tanlangan index
     const [selectedOption, setSelectedOption] = useState(null); // tanlangan option
-    const [questionId, setQuestionId] = useState(null);
-    const handleClick = (index, key, questionId) => {
+    const handleClick = (index, key) => {
         setSelectedIndex(index); // clickedfunction
         setSelectedOption(key);
-        setQuestionId(questionId);
     };
     // option rasmlari
     const images = [
@@ -46,27 +45,31 @@ const Test = () => {
     ];
     const totalTests = 20; // Umumiy testlar soni
     // testlari stati
-    const [currentTest, setCurrentTest] = useState(1); // Hozirgi test raqami
     // test tugaganda
     const handleNextTest = () => {
         if (currentTest < totalTests) {
             setCurrentTest(currentTest + 1);
             dispatchTest(
                 addUserResponse({
-                    questionId: questionId,
+                    questionId: data.questions[currentTest - 1].questionId,
                     answer: selectedOption,
                 })
             );
             dispatchTest(resetTimeLeft());
             setSelectedIndex(null);
             setDisabled(false);
+            setSelectedOption(null);
         } else if (currentTest === totalTests) {
             dispatchTest(
                 postTestSessionData({
                     testSessionId,
                     userResponses: [
                         ...userResponses,
-                        { questionId: questionId, answer: selectedOption },
+                        {
+                            questionId:
+                                data.questions[currentTest - 1].questionId,
+                            answer: selectedOption,
+                        },
                     ],
                 })
             );
@@ -76,6 +79,7 @@ const Test = () => {
     };
     // buttonDisabled
     const [disabled, setDisabled] = useState(false);
+
     // vaqt tugaganda
     const handleTimeUp = () => {
         // Agar vaqt tugasa, keyingi testga o‘tamiz yoki test tugaganini ko‘rsatamiz
@@ -83,23 +87,29 @@ const Test = () => {
             setCurrentTest(currentTest + 1);
             dispatchTest(
                 addUserResponse({
-                    questionId: questionId,
+                    questionId: data.questions[currentTest - 1].questionId,
                     answer: selectedOption,
                 })
             );
             setSelectedIndex(null);
             setDisabled(false);
+            setSelectedOption(null);
+
         } else if (currentTest === totalTests) {
+            
             dispatchTest(
                 postTestSessionData({
                     testSessionId,
                     userResponses: [
                         ...userResponses,
-                        { questionId: questionId, answer: selectedOption },
+                        {
+                            questionId:
+                                data.questions[currentTest - 1].questionId,
+                            answer: selectedOption,
+                        },
                     ],
                 })
             );
-
             navigate('/result');
         }
     };
@@ -153,9 +163,7 @@ const Test = () => {
                                                     handleClick(
                                                         index,
                                                         variant.key,
-                                                        data.questions[
-                                                            currentTest - 1
-                                                        ].questionId
+                                                        
                                                     );
                                                     setDisabled(true);
                                                 }}
