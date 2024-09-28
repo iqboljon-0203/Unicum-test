@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  telegramId: null,
+  telegramId: JSON.parse(localStorage.getItem('telegramId')) || '',
 };
 
 const telegramIdSlice = createSlice({
@@ -10,6 +10,7 @@ const telegramIdSlice = createSlice({
   reducers: {
     setTelegramId: (state, action) => {
       state.telegramId = action.payload;
+      localStorage.setItem('telegramId', JSON.stringify(state.telegramId));
     },
   },
 });

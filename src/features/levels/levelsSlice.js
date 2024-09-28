@@ -13,29 +13,29 @@ export const fetchLevels = createAsyncThunk(
 );
 
 const levelsSlice = createSlice({
-  name: 'levels',
-  initialState: {
-    levels: [],
-    status: 'idle', // idle, loading, succeeded, failed
-    error: null
-  },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchLevels.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchLevels.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        // Postlarni saqlash
-        state.levels = action.payload;
-      })
-      .addCase(fetchLevels.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
-       
-  }
+    name: 'levels',
+    initialState: {
+        levels: JSON.parse(localStorage.getItem('levels')) || [],
+        status: 'idle', // idle, loading, succeeded, failed
+        error: null,
+    },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchLevels.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchLevels.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                // Postlarni saqlash
+                state.levels = action.payload;
+                localStorage.setItem('levels', JSON.stringify(state.levels)); // LocalStorage ga saqlash
+            })
+            .addCase(fetchLevels.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            });
+    },
 });
 
 export default levelsSlice.reducer;

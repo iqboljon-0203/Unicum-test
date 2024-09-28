@@ -23,7 +23,7 @@ export const postSelectedLevel = createAsyncThunk(
 const postSelectedLevelSlice = createSlice({
     name: 'selectedLevel',
     initialState: {
-        data: null, // Serverdan kelgan data
+        data: JSON.parse(localStorage.getItem('selectedData')), // Serverdan kelgan data
         loading: false, // Yuklanish holati
         error: null, // Xatolik
     },
@@ -37,6 +37,8 @@ const postSelectedLevelSlice = createSlice({
             .addCase(postSelectedLevel.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
+                localStorage.setItem('selectedData', JSON.stringify(state.data)); // LocalStorage ga saqlash
+
             })
             .addCase(postSelectedLevel.rejected, (state, action) => {
                 state.loading = false;

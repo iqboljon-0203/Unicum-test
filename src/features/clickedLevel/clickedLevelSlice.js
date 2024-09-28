@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    clickedLevel: '', // Boshida bo'sh string
+    clickedLevel: JSON.parse(localStorage.getItem('clickedLevel')) || "",
 };
 
 const clickedLevelSlice = createSlice({
@@ -10,6 +10,7 @@ const clickedLevelSlice = createSlice({
     reducers: {
         setClickedLevel: (state, action) => {
             state.clickedLevel = action.payload; // payload orqali yuborilgan stringni saqlash
+            localStorage.setItem('clickedLevel', JSON.stringify(state.clickedLevel)); // LocalStorage ga saqlash
         },
     },
 });

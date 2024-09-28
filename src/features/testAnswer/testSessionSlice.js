@@ -20,7 +20,7 @@ export const postTestSessionData = createAsyncThunk(
 const testSessionSlice = createSlice({
     name: 'testSession',
     initialState: {
-        data: null,
+        data: JSON.parse(localStorage.getItem('answerData'))||null,
         testSessionId: null,
         userResponses: [],
         isLoading: false,
@@ -36,7 +36,7 @@ const testSessionSlice = createSlice({
                  state.testSessionId = action.payload;
         },
         clearTestSession: (state) => {
-            state.data = null;
+            state.data = localStorage.removeItem('data');
             state.userResponses = [];
             state.testSessionId = null;
             state.isLoading = false;
@@ -55,6 +55,7 @@ const testSessionSlice = createSlice({
                 state.isLoading = false;
                 state.data = action.payload;
                 state.postSuccess = true;
+                localStorage.setItem('answerData', JSON.stringify(state.data));
             })
             .addCase(postTestSessionData.rejected, (state, action) => {
                 state.isLoading = false;

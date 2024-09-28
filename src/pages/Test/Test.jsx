@@ -112,7 +112,7 @@ const Test = () => {
             );
             navigate('/result');
         }
-    };
+    }
     // option rasmlari uchun sanoq
     let count = -1;
     // Progress foizini hisoblaymiz

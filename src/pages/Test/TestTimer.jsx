@@ -3,7 +3,7 @@ import { memo } from 'react';
 import TimerImage from '../../assets/logos/timer.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrementTimeLeft,resetTimeLeft } from '../../features/timeLeft/timeLeftSlice';
-const TestTimer = ({ onTimeUp}) => {
+const TestTimer = ({onTimeUp}) => {
      const timeLeft = useSelector((state) => state.timeLeft.timeLeft); // Redux'dan qiymatni olish
      const dispatch = useDispatch();
     // Timerni ishga tushirish uchun `useEffect` dan foydalanamiz

@@ -10,6 +10,7 @@ const ResultPage = () => {
     const [showConfetti, setShowConfetti] = useState(true);
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.testAnswer);
+    
     const handleClick = () => {
         setShowConfetti(false);
         dispatch(clearTestSession())  

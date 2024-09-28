@@ -37,6 +37,7 @@ const Degree = () => {
     };
 
     const { levels, status, error } = useSelector((state) => state.levels);
+    
     if (status === 'loading') {
         return <div>Loading...</div>;
     }
