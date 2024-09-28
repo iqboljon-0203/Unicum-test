@@ -4,11 +4,16 @@ import UnicumLogo from '../../assets/logos/unicum_logo.svg';
 import CupImage from '../../assets/logos/cup.svg';
 import Confetti from 'react-confetti';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { clearTestSession } from '../../features/testAnswer/testSessionSlice';
 const ResultPage = () => {
     const [showConfetti, setShowConfetti] = useState(true);
-    const {data}=useSelector((state)=>state.testAnswer)
-    
+    const dispatch = useDispatch();
+    const { data } = useSelector((state) => state.testAnswer);
+    const handleClick = () => {
+        setShowConfetti(false);
+        dispatch(clearTestSession())  
+    };
     return (
         <div className="result">
             <div className="container">
@@ -53,7 +58,7 @@ const ResultPage = () => {
                 </ul>
                 <Link to="/offer">
                     <button
-                        onClick={() => setShowConfetti(false)}
+                        onClick={() => handleClick()}
                         className="result_button"
                     >
                         Завершить тест

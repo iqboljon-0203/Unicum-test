@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import TestTimer from './TestTimer';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetTimeLeft } from '../../features/timeLeft/timeLeftSlice';
-import { addTestSessionId,addUserResponse,postTestSessionData } from '../../features/testAnswer/testSessionSlice';
+import { addTestSessionId, addUserResponse,postTestSessionData } from '../../features/testAnswer/testSessionSlice';
 const Test = () => {
     const navigate = useNavigate(); //navigate
     const dispatchTest = useDispatch(); // dispatch
@@ -19,9 +19,13 @@ const Test = () => {
     if(data){
         dispatchTest(addTestSessionId(data.testSessionId));
     }
-    const { testSessionId, userResponses } = useSelector(
+    const { testSessionId } = useSelector((state) => state.testAnswer);
+    
+
+    const { userResponses } = useSelector(
         (state) => state.testAnswer
     );
+
     const clickedLevel = useSelector(
         (state) => state.clickedLevel.clickedLevel //tanlangan level
     );
@@ -47,21 +51,28 @@ const Test = () => {
     const handleNextTest = () => {
         if (currentTest < totalTests) {
             setCurrentTest(currentTest + 1);
-            dispatchTest(addUserResponse({ questionId:questionId, answer:selectedOption }));
+            dispatchTest(
+                addUserResponse({
+                    questionId: questionId,
+                    answer: selectedOption,
+                })
+            );
             dispatchTest(resetTimeLeft());
             setSelectedIndex(null);
             setDisabled(false);
-        }else if (currentTest === totalTests) {
-            
-          dispatchTest(
-              postTestSessionData({
-                  testSessionId,
-                  userResponses: [...userResponses, { questionId:questionId, answer:selectedOption }],
-              })
-          ); 
-          navigate('/result');  
+        } else if (currentTest === totalTests) {
+            dispatchTest(
+                postTestSessionData({
+                    testSessionId,
+                    userResponses: [
+                        ...userResponses,
+                        { questionId: questionId, answer: selectedOption },
+                    ],
+                })
+            );
+
+            navigate('/result');
         }
-         
     };
     // buttonDisabled
     const [disabled, setDisabled] = useState(false);
@@ -70,20 +81,26 @@ const Test = () => {
         // Agar vaqt tugasa, keyingi testga o‘tamiz yoki test tugaganini ko‘rsatamiz
         if (currentTest < 20) {
             setCurrentTest(currentTest + 1);
-            dispatchTest(addUserResponse({ questionId:questionId, answer:selectedOption }));
+            dispatchTest(
+                addUserResponse({
+                    questionId: questionId,
+                    answer: selectedOption,
+                })
+            );
             setSelectedIndex(null);
             setDisabled(false);
-        } else if(currentTest===totalTests){
+        } else if (currentTest === totalTests) {
             dispatchTest(
                 postTestSessionData({
                     testSessionId,
                     userResponses: [
                         ...userResponses,
-                        { questionId:questionId, answer:selectedOption },
+                        { questionId: questionId, answer: selectedOption },
                     ],
                 })
             );
-            navigate('/result');  
+
+            navigate('/result');
         }
     };
     // option rasmlari uchun sanoq

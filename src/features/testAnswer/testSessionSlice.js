@@ -33,11 +33,10 @@ const testSessionSlice = createSlice({
             state.userResponses.push(action.payload);
         },
         addTestSessionId: (state, action) => {
-             if (!state.testSessionId) {
                  state.testSessionId = action.payload;
-             }
         },
         clearTestSession: (state) => {
+            state.data = null;
             state.userResponses = [];
             state.testSessionId = null;
             state.isLoading = false;
@@ -65,6 +64,6 @@ const testSessionSlice = createSlice({
 });
 
 // Reducer'larni eksport qilish
-export const { addUserResponse, addTestSessionId } = testSessionSlice.actions;
+export const { addUserResponse, addTestSessionId,clearTestSession } = testSessionSlice.actions;
 
 export default testSessionSlice.reducer;
