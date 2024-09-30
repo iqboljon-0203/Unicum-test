@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import UnicumLogo from '../../assets/logos/unicum_logo.svg';
+import UnicumLogo from '../../assets/logos/unicum_logo_pink.svg';
 import HandLeft from '../../assets/logos/hand_left.svg';
 import HandSelectedBeginner from '../../assets/logos/beginner.svg';
 import HandSelectedIntermediate from '../../assets/logos/intermediate.svg';
@@ -76,10 +76,10 @@ const Degree = () => {
                         alt="Unicum logo"
                     />
                 </Link>
-                <h1 className="degree_title">Выберите ваш уровень</h1>
+                <h1 className="degree_title">Darajangizni tanlang</h1>
                 <p className="degree_text">
-                    Пожалуйста, выберите один из предложенных уровней для начала
-                    теста
+                    Iltimos, testni boshlash uchun quyidagi darajalardan birini
+                    tanlang
                 </p>
                 <ul className="degree_list">
                     {degrees.map((degree, index) => (
@@ -90,9 +90,10 @@ const Degree = () => {
                             style={{
                                 backgroundColor:
                                     selectedIndex === degree.label
-                                        ? '#FFD648'
-                                        : '#EFEFEF', // Change this color as needed
+                                        ? '#1907EC'
+                                        : '#F3F3F3', // Change this color as needed
                                 cursor: 'pointer',
+                                color: selectedIndex === degree.label ? '#fff' : '#1907EC',
                                 // Add some padding for better clickability
                             }}
                         >
@@ -110,7 +111,7 @@ const Degree = () => {
                         onClick={() => buttonClicked()}
                         className="degree_button"
                     >
-                        Начать тест
+                        Testni boshlash
                     </button>
                 </Link>
             </div>

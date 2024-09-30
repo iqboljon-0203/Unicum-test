@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Result.css';
-import UnicumLogo from '../../assets/logos/unicum_logo.svg';
+import UnicumLogo from '../../assets/logos/unicum_logo_white.svg';
 import CupImage from '../../assets/logos/cup.svg';
+import UpsetFaceImage from "../../assets/logos/upset.svg"
 import Confetti from 'react-confetti';
 import { useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
@@ -18,7 +19,7 @@ const ResultPage = () => {
     return (
         <div className="result">
             <div className="container">
-                {showConfetti && <Confetti />}
+                {data.testSession.correctAnswers>=15?showConfetti&&<Confetti/>:null}
                 <Link className="result_link" to="/">
                     <img
                         className="result_logo"
@@ -26,35 +27,47 @@ const ResultPage = () => {
                         alt="Unicum logo"
                     />
                 </Link>
-                <img className="result_img" src={CupImage} alt="Cup icon" />
+                <img
+                    className="result_img"
+                    src={
+                        data.testSession.correctAnswers >= 15
+                            ? CupImage
+                            : UpsetFaceImage
+                    }
+                    alt="Cup icon"
+                />
                 <h1 className="result_title">
-                    Поздравляем с завершением теста!
+                    {data.testSession.correctAnswers >= 15
+                        ? 'Tabriklaymiz, siz bizning testimizni muvaffaqiyatli topshirdingiz'
+                        : "Afsuski, siz testdan o'ta olmadingiz."}
                 </h1>
                 <p className="result_text">
-                    Ниже представлен ваш результат, который поможет нам лучше
-                    определить ваш уровень подготовки
+                    {data.testSession.correctAnswers >= 15
+                        ? 'Biz sizning bilim darajangizni aniqladik va bundan keyin qaysi bosqichni tanlashingiz kerakligini bilamiz. Ajoyib natija!'
+                        : "Xavotir olmang! Siz hali ham bilimlaringizni yaxshilash va yana urinib ko'rish imkoniyatiga egasiz. Biz sizga yordam berishga tayyormiz"}
                 </p>
                 <ul className="result_list">
                     <li className="result_item">
                         <p className="result_item_number">
-                            {data&&data.testSession.totalQuestions}
+                            {data && data.testSession.totalQuestions}
                         </p>
                         <p className="result_item_info">
-                            Общее кол-во вопросов
+                            Savollarning umumiy soni
                         </p>
                     </li>
                     <li className="result_item">
-                        <p className="result_item_number result_item_number_second">
-                            {data&&data.testSession.correctAnswers}
+                        <p className="result_item_number ">
+                            {data && data.testSession.correctAnswers}
                         </p>
-                        <p className="result_item_info">Правильных ответов</p>
+                        <p className="result_item_info">To'g'ri javoblar</p>
                     </li>
                     <li className="result_item">
-                        <p className="result_item_number result_item_number_third">
-                            {data&&(data.testSession.totalQuestions -
-                                data.testSession.correctAnswers)}
+                        <p className="result_item_number">
+                            {data &&
+                                data.testSession.totalQuestions -
+                                    data.testSession.correctAnswers}
                         </p>
-                        <p className="result_item_info">Неправильных ответов</p>
+                        <p className="result_item_info">Noto'g'ri javoblar</p>
                     </li>
                 </ul>
                 <Link to="/offer">
@@ -62,9 +75,16 @@ const ResultPage = () => {
                         onClick={() => handleClick()}
                         className="result_button"
                     >
-                        Завершить тест
+                        Testni yakunlash
                     </button>
                 </Link>
+                {data.testSession.correctAnswers < 15 ? (
+                    <Link to="/home">
+                        <button className="back_button">
+                            Uy sahifasiga qaytish
+                        </button>
+                    </Link>
+                ) : null}
             </div>
         </div>
     );

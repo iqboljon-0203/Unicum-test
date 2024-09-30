@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    timeLeft: 30, // boshlang‘ich qiymat
+    timeLeft: 59, // boshlang‘ich qiymat
 };
 
 const timeLeftSlice = createSlice({
@@ -17,7 +17,7 @@ const timeLeftSlice = createSlice({
             }
         },
         resetTimeLeft: (state) => {
-            state.timeLeft = 30; // timeLeft qiymatini qayta boshlash holatiga keltirish
+            state.timeLeft = 59; // timeLeft qiymatini qayta boshlash holatiga keltirish
         },
     },
 });

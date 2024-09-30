@@ -4,8 +4,7 @@ import TestNumberOne from '../../assets/logos/test1.svg';
 import TestNumberTwo from '../../assets/logos/test2.svg';
 import TestNumberThree from '../../assets/logos/test3.svg';
 import TestNumberFour from '../../assets/logos/test4.svg';
-import TestSelectedCorrect from '../../assets/logos/correct.svg';
-import TestSelectedWrong from '../../assets/logos/wrong.svg';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TestTimer from './TestTimer';
@@ -137,8 +136,8 @@ const Test = () => {
                         paddingLeft: '10px',
                     }}
                 >
-                    <h3 style={{ color: '#989898' }}>
-                        <span style={{ color: '#FFD648', fontSize: '24px' }}>
+                    <h3 style={{ color: '#F320444D',fontSize: '16px' }}>
+                        <span style={{ color: '#F32044', fontSize: '20px' }}>
                             {currentTest}
                         </span>
                         /{totalTests}
@@ -158,38 +157,24 @@ const Test = () => {
                                         variant.value && (
                                             <button
                                                 key={index}
-                                                className={`test_item  ${selectedIndex === index && variant.key === 'a' ? 'correct' : selectedIndex === index && variant.key !== 'a' ? 'incorrect' : ''} ${(selectedIndex === 0 || selectedIndex) && variant.key === 'a' ? 'correct' : ''}`}
+                                                className="test_item"
                                                 onClick={() => {
                                                     handleClick(
                                                         index,
-                                                        variant.key,
-                                                        
+                                                        variant.key
                                                     );
                                                     setDisabled(true);
                                                 }}
                                                 style={{
+                                                    backgroundColor:selectedIndex === index ? '#1907EC' : '#F3F3F3',
+                                                    color:selectedIndex === index ? '#fff' : '#1907EC',
                                                     cursor: 'pointer',
                                                 }}
                                                 disabled={disabled}
                                             >
                                                 <img
                                                     className="test_img"
-                                                    src={
-                                                        (selectedIndex ===
-                                                            index &&
-                                                            variant.key ===
-                                                                'a') ||
-                                                        ((selectedIndex === 0 ||
-                                                            selectedIndex) &&
-                                                            variant.key === 'a')
-                                                            ? TestSelectedCorrect
-                                                            : selectedIndex ===
-                                                                    index &&
-                                                                variant.key !==
-                                                                    'a'
-                                                              ? TestSelectedWrong
-                                                              : images[count]
-                                                    }
+                                                    src={images[count]}
                                                     alt="Test Image"
                                                 />
                                                 <p className="test_label">
@@ -211,8 +196,8 @@ const Test = () => {
                         className="test_next_button"
                     >
                         {currentTest === totalTests
-                            ? 'Узнать результат'
-                            : 'Следующий вопрос'}
+                            ? "Natijani ko'rish"
+                            : 'Keyingi savol'}
                     </button>
                 </Link>
             </div>

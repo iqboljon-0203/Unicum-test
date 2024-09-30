@@ -29,7 +29,7 @@ const TestTimer = ({onTimeUp}) => {
                     src={TimerImage}
                     alt="Timer logo"
                 ></img>{' '}
-                <p>{timeLeft >= 10 ? `00:${timeLeft}` : `00:0${timeLeft}`}</p>
+                <p style={{ fontSize: '20px' }}>{timeLeft >= 10 ? `00:${timeLeft}` : `00:0${timeLeft}`}</p>
             </h3>
         </div>
     );

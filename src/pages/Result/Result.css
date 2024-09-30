@@ -1,106 +1,130 @@
-.result{
+.result {
     width: 100%;
     height: 100vh;
     padding-top: 40px;
     padding-bottom: 40px;
+    background-image: url('../../assets/images/Bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.result_link{
+.result_link {
     display: block;
+    padding-top: 30px;
 }
-.result_logo{
+.result_logo {
     display: block;
     margin: 0 auto;
     width: 140.1px;
     height: 35px;
 }
-.result_img{
+.result_img {
+    padding-top: 80px;
     display: block;
     margin: 0 auto;
-    margin-top: -30px;
+    padding-bottom: 20px;
 }
-.result_title{
-    font-family: Gilroy;
-font-size: 36px;
-font-weight: 700;
-line-height: 32.4px;
-text-align: center;
-    margin-top:-40px;
-    color: #040404;
+.result_title {
+    font-family: 'EdgecuttingLiteMedium';
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 26.4px;
+    text-align: center;
+
+    color: #fff;
 
     margin-bottom: 20px;
 }
-.result_text{
+.result_text {
     width: 90%;
     display: block;
     margin: 0 auto;
-    font-family: Gilroy;
+    font-family: 'EdgecuttingLiteMedium';
     font-size: 16px;
-font-weight: 400;
-line-height: 19.2px;
-color: #989898;
-text-align: center;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: center;
+
+    color: #ffffff99;
+
+    text-align: center;
     margin-bottom: 40px;
 }
-.result_list{
+.result_list {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     margin-bottom: 60px;
 }
-.result_item{
+.result_item {
     width: 28%;
     text-align: center;
 }
-.result_item_number{
-    font-family: Gilroy;
-font-size: 32px;
-font-weight: 400;
-line-height: 28.8px;
-text-align: center;
-margin-bottom: 10px;
-color: #040404;
+.result_item_number {
+    font-family: 'EdgecuttingLiteMedium';
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 39.6px;
+    text-align: center;
 
-
+    margin-bottom: 10px;
+    color: #fff;
 }
-.result_item_number_second{
-    color: #12D700;
 
+.result_item_info {
+    font-family: 'EdgecuttingLiteMedium';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    text-align: center;
+
+    color: #ffffff99;
 }
-.result_item_number_third{
-    color: #F80000;
-
-
-}
-.result_item_info{
-    font-family: Gilroy;
-font-size: 12px;
-font-weight: 400;
-line-height: 11.4px;
-text-align: center;
-color: #989898;
-
-
-}
-.result_button{
+.result_button {
     width: 100%;
-padding: 20px 60px 20px 60px;
-gap: 10px;
-border-radius: 200px;
-opacity: 0px;
-background-color:  #FFD648;
-border: none;
-font-family: Gilroy;
-font-size: 16px;
-font-weight: 600;
-line-height: 19.2px;
-text-align: center;
-color: #040404;
+    padding: 20px 60px 20px 60px;
+    gap: 10px;
+    border-radius: 200px;
+    opacity: 0px;
+    background-color: #ffffff;
+    border: none;
+    font-family: 'EdgecuttingLiteMedium';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: center;
 
-display: block;
-margin: 0 auto;
+    color: #040404;
+
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
-.result_button:hover{
-    background-color: #FFE488;
-;
+.back_button {
+    width: 100%;
+    padding: 20px 60px 20px 60px;
+    gap: 10px;
+    border-radius: 200px;
+    opacity: 0px;
+    background-color: #ffffff80;
+
+    border: none;
+    font-family: 'EdgecuttingLiteMedium';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: center;
+
+    color: #fff;
+
+    display: block;
+    margin: 0 auto;
+}
+.result_button:hover {
+    background-color: #ffffff80;
+    color: #fff;
+}
+.back_button:hover {
+    border: 3px solid #FFFFFF;
+    background-color: transparent;
 }
