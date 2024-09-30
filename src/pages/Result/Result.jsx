@@ -78,13 +78,7 @@ const ResultPage = () => {
                         Testni yakunlash
                     </button>
                 </Link>
-                {data.testSession.correctAnswers < 15 ? (
-                    <Link to="/home">
-                        <button className="back_button">
-                            Uy sahifasiga qaytish
-                        </button>
-                    </Link>
-                ) : null}
+                
             </div>
         </div>
     );
