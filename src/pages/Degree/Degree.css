@@ -87,3 +87,6 @@
 .degree_button:hover {
     background-color: #756bfe;
 }
+.degree_button:disabled {
+    background-color: #756bfe;
+}

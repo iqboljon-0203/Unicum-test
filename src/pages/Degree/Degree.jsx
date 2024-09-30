@@ -26,7 +26,6 @@ const Degree = () => {
     const clickedLevel = useSelector(
         (state) => state.clickedLevel.clickedLevel //tanlangan level
     );
-
     const buttonClicked = () => {
         const requestData = {
             telegramId: telegramId, // Buni kerakli joydan dinamik ravishda olish mumkin
@@ -86,14 +85,19 @@ const Degree = () => {
                         <li
                             key={index}
                             className="degree_item"
-                            onClick={() => handleClick(degree.label)}
+                            onClick={() => {
+                                handleClick(degree.label);
+                            }}
                             style={{
                                 backgroundColor:
                                     selectedIndex === degree.label
                                         ? '#1907EC'
                                         : '#F3F3F3', // Change this color as needed
                                 cursor: 'pointer',
-                                color: selectedIndex === degree.label ? '#fff' : '#1907EC',
+                                color:
+                                    selectedIndex === degree.label
+                                        ? '#fff'
+                                        : '#1907EC',
                                 // Add some padding for better clickability
                             }}
                         >
@@ -110,6 +114,7 @@ const Degree = () => {
                     <button
                         onClick={() => buttonClicked()}
                         className="degree_button"
+                        disabled={selectedIndex === null}
                     >
                         Testni boshlash
                     </button>
