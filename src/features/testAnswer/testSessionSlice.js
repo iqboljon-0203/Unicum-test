@@ -36,7 +36,7 @@ const testSessionSlice = createSlice({
                  state.testSessionId = action.payload;
         },
         clearTestSession: (state) => {
-            state.data = localStorage.removeItem('data');
+            state.data = null;
             state.userResponses = [];
             state.testSessionId = null;
             state.isLoading = false;

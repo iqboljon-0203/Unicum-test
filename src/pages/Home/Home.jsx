@@ -7,7 +7,6 @@ import { setTelegramId } from "../../features/telegramId/telegramIdSlice";
 import { fetchLevels } from "../../features/levels/levelsSlice";
 const HomePage = () => {
   const dispatch=useDispatch();
-  
   useEffect(() => {
      const searchParams = new URLSearchParams(window.location.search);
       const idFromUrl = searchParams.get('telegramId');

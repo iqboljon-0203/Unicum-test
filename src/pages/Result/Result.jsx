@@ -11,6 +11,7 @@ const ResultPage = () => {
     const [showConfetti, setShowConfetti] = useState(true);
     const dispatch = useDispatch();
     const { data } = useSelector((state) => state.testAnswer);
+    console.log(data);
     
     const handleClick = () => {
         setShowConfetti(false);
@@ -19,7 +20,7 @@ const ResultPage = () => {
     return (
         <div className="result">
             <div className="container">
-                {data.testSession.correctAnswers>=15?showConfetti&&<Confetti/>:null}
+                {data&&data.testSession.correctAnswers>=15?showConfetti&&<Confetti/>:null}
                 <Link className="result_link" to="/">
                     <img
                         className="result_logo"
@@ -30,19 +31,19 @@ const ResultPage = () => {
                 <img
                     className="result_img"
                     src={
-                        data.testSession.correctAnswers >= 15
+                        data&&data.testSession.correctAnswers >= 15
                             ? CupImage
                             : UpsetFaceImage
                     }
                     alt="Cup icon"
                 />
                 <h1 className="result_title">
-                    {data.testSession.correctAnswers >= 15
+                    {data&&data.testSession.correctAnswers >= 15
                         ? 'Tabriklaymiz, siz bizning testimizni muvaffaqiyatli topshirdingiz'
                         : "Afsuski, siz testdan o'ta olmadingiz."}
                 </h1>
                 <p className="result_text">
-                    {data.testSession.correctAnswers >= 15
+                    {data&&data.testSession.correctAnswers >= 15
                         ? 'Biz sizning bilim darajangizni aniqladik va bundan keyin qaysi bosqichni tanlashingiz kerakligini bilamiz. Ajoyib natija!'
                         : "Xavotir olmang! Siz hali ham bilimlaringizni yaxshilash va yana urinib ko'rish imkoniyatiga egasiz. Biz sizga yordam berishga tayyormiz"}
                 </p>
