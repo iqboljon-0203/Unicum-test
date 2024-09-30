@@ -43,7 +43,7 @@ const Test = () => {
         TestNumberThree,
         TestNumberFour,
     ];
-    const totalTests = 20; // Umumiy testlar soni
+    const totalTests = data.questions.length; // Umumiy testlar soni
     // testlari stati
     // test tugaganda
     const handleNextTest = () => {
