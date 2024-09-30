@@ -42,7 +42,7 @@ const Test = () => {
         TestNumberThree,
         TestNumberFour,
     ];
-    const totalTests = data.questions.length; // Umumiy testlar soni
+    const totalTests = data&&data.questions.length; // Umumiy testlar soni
     // testlari stati
     // test tugaganda
     const handleNextTest = () => {
@@ -56,7 +56,6 @@ const Test = () => {
             );
             dispatchTest(resetTimeLeft());
             setSelectedIndex(null);
-            setDisabled(false);
             setSelectedOption(null);
         } else if (currentTest === totalTests) {
             dispatchTest(
@@ -76,8 +75,6 @@ const Test = () => {
             navigate('/result');
         }
     };
-    // buttonDisabled
-    const [disabled, setDisabled] = useState(false);
 
     // vaqt tugaganda
     const handleTimeUp = () => {
@@ -91,7 +88,6 @@ const Test = () => {
                 })
             );
             setSelectedIndex(null);
-            setDisabled(false);
             setSelectedOption(null);
 
         } else if (currentTest === totalTests) {
@@ -164,14 +160,14 @@ const Test = () => {
                                                         index,
                                                         variant.key
                                                     );
-                                                    setDisabled(true);
+                                                    
                                                 }}
                                                 style={{
                                                     backgroundColor:selectedIndex === index ? '#1907EC' : '#F3F3F3',
                                                     color:selectedIndex === index ? '#fff' : '#1907EC',
                                                     cursor: 'pointer',
                                                 }}
-                                                disabled={disabled}
+                                                
                                             >
                                                 <img
                                                     className="test_img"
