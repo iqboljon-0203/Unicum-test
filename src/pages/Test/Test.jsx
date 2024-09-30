@@ -131,7 +131,7 @@ const Test = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        marginBottom: '30px',
+                        marginBottom: '40px',
                         marginTop: '30px',
                         paddingRight: '10px',
                         paddingLeft: '10px',
