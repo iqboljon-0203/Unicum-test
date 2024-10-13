@@ -38,16 +38,17 @@ const Questionnaire = () => {
         };
     }, []);
   const dispatch=useDispatch();
-  const {status} = useSelector((state) => state.formSubmit);
+  const distpatchTelegramId=useDispatch();
+  
   
   useEffect(() => {
      const searchParams = new URLSearchParams(window.location.search);
       const idFromUrl = searchParams.get('telegramId');
       if (idFromUrl) {
       // Redux state'ga telegramId ni yozish
-      dispatch(setTelegramId(idFromUrl));
+      distpatchTelegramId(setTelegramId(idFromUrl));
     }
-  },[dispatch])
+  },[distpatchTelegramId])
    const telegramId = useSelector((state) => state.telegram.telegramId); //telegram id
    
   const notClicked = (e) => {
@@ -96,14 +97,13 @@ const Questionnaire = () => {
       [name]: value,
     });
   };
-
-  const  handleSubmit = async (e) => {
+  
+  const  handleSubmit =(e) => {
     e.preventDefault();
     dispatch(submitForm({...formData,user:telegramId}));
-    if(status === 'succeeded'){
-      window.Telegram.WebApp.close();
-    }
+    
   };
+
   return (
     <div className="questionnaire">
       <img className="questionnaire_img" src={UnicumLogo} alt="Unicum logo" />
@@ -117,7 +117,7 @@ const Questionnaire = () => {
             <label>
               <p>Yoshingiz:</p>
               <input
-                type="number"
+                type="text"
                 name="age"
                 onChange={handleChange}
                 required
@@ -1749,7 +1749,7 @@ const Questionnaire = () => {
             </label>
           </div>
 
-          <button className="form_button" type="submit">
+          <button  className="form_button" type="submit">
             Yuborish
           </button>
         </form>

@@ -6,6 +6,13 @@ import axios from 'axios';
 export const submitForm = createAsyncThunk('form/submitForm', async (formData, { rejectWithValue }) => {
   try {
     const response = await axios.post('https://temporary-api.usat.uz/api/v1/users/survey/create/', formData);
+    if (response.status === 200) {
+        // Telegram WebApp ni yopish
+        
+        if (window.Telegram && window.Telegram.WebApp) {
+          window.Telegram.WebApp.close();          
+        }
+      }
     return response.data; // Backenddan qaytgan javob
   } catch (error) {
     return rejectWithValue(error.response.data); // Xato bo'lsa xato ma'lumotni qaytarish
