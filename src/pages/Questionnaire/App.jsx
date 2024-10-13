@@ -38,6 +38,8 @@ const Questionnaire = () => {
         };
     }, []);
   const dispatch=useDispatch();
+  const {status} = useSelector((state) => state.formSubmit);
+  
   useEffect(() => {
      const searchParams = new URLSearchParams(window.location.search);
       const idFromUrl = searchParams.get('telegramId');
@@ -98,7 +100,9 @@ const Questionnaire = () => {
   const  handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(submitForm({...formData,user:telegramId}));
-    window.Telegram.WebApp.close();
+    if(status === 'succeeded'){
+      window.Telegram.WebApp.close();
+    }
   };
   return (
     <div className="questionnaire">
