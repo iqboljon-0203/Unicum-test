@@ -5,6 +5,7 @@ import clickedLevelReducer from '../features/clickedLevel/clickedLevelSlice';
 import postSelectedLevelReducer from '../features/postSelectedLevel/postSelectedLevelSlice';
 import timeLeftReducer from '../features/timeLeft/timeLeftSlice';
 import testAnswersReducer from '../features/testAnswer/testSessionSlice';
+import formReducer from "../features/formSubmit/formSlice";
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     postSelectedLevel: postSelectedLevelReducer,
     timeLeft: timeLeftReducer,
     testAnswer: testAnswersReducer,
+    formSubmit: formReducer,
 });
 
 

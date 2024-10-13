@@ -1,6 +1,9 @@
 import UnicumLogo from "../../assets/logos/unicum_logo_pink.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
+import { useDispatch,useSelector } from 'react-redux';
+import { setTelegramId } from "../../features/telegramId/telegramIdSlice";
+import { submitForm } from "../../features/formSubmit/formSlice";
 const Questionnaire = () => {
   const [selected, setSelected] = useState("");
   const [gender, setGender] = useState("");
@@ -22,6 +25,29 @@ const Questionnaire = () => {
   const [formData, setFormData] = useState({
     age: "",
   });
+  // Skriptni qo'shish
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://telegram.org/js/telegram-web-app.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        // O'chirish uchun tozalash funksiyasi
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+  const dispatch=useDispatch();
+  useEffect(() => {
+     const searchParams = new URLSearchParams(window.location.search);
+      const idFromUrl = searchParams.get('telegramId');
+      if (idFromUrl) {
+      // Redux state'ga telegramId ni yozish
+      dispatch(setTelegramId(idFromUrl));
+    }
+  },[dispatch])
+   const telegramId = useSelector((state) => state.telegram.telegramId); //telegram id
+   
   const notClicked = (e) => {
     e.stopPropagation();
   };
@@ -31,26 +57,22 @@ const Questionnaire = () => {
   };
   useEffect(() => {
     if (selectedKey === "obstacles") {
-      console.log(selected);
 
       arr.includes(selected)
         ? arr.splice(arr.indexOf(selected), 1)
         : arr.push(selected);
       setArr(arr);
-      console.log(arr);
 
       setFormData({
         ...formData,
         [selectedKey]: arr,
       });
     } else if (selectedKey === "conditions") {
-      console.log(selected);
 
       cond.includes(selected)
         ? cond.splice(cond.indexOf(selected), 1)
         : cond.push(selected);
       setCond(cond);
-      console.log(cond);
 
       setFormData({
         ...formData,
@@ -63,7 +85,6 @@ const Questionnaire = () => {
       });
     }
   }, [selectedKey, selected, count]);
-  console.log(formData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,10 +95,10 @@ const Questionnaire = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const  handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    alert(JSON.stringify(formData, null, 2));
+    dispatch(submitForm({...formData,user:telegramId}));
+    window.Telegram.WebApp.close();
   };
   return (
     <div className="questionnaire">
