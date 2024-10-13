@@ -7,6 +7,7 @@ export const fetchLevels = createAsyncThunk(
   async (_,{getState}) => {
     const state = getState();
     const telegramId = selectTelegramId(state);
+    
     const response = await axios.get(`https://unicum.usat.uz/api/v1/users/levels/bot-user/?telegramId=${telegramId}`);
     return response.data;
   }
