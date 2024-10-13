@@ -1,0 +1,220 @@
+.questionnaire {
+    width: 100%;
+    padding: 30px 20px;
+}
+.questionnaire_img {
+    display: block;
+    margin: 0 auto;
+    width: 140.1px;
+    height: 35px;
+    margin-bottom: 40px;
+}
+.questionnaire_title {
+    font-family: "EdgecuttingLiteMedium";
+font-size: 24px;
+font-weight: 500;
+line-height: 21.6px;
+text-align: center;
+color: #1907EC;
+margin-bottom: 20px;
+
+}
+label p{
+    font-family: "EdgecuttingLiteMedium";
+font-size: 16px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+color: #1907EC4D;
+
+
+
+}
+
+.form_div{
+    padding: 10px 10px;
+}
+.form_ul{
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form_ul li{
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.circle{
+    min-width: 25px;
+    min-height: 25px;
+    border: 2px solid #1907EC;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.square{
+    min-width: 25px;
+    min-height: 25px;
+    border: 2px solid #1907EC;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle div{
+    min-width: 15px;
+    min-height: 15px;
+    border-radius: 50%;
+
+}
+.child_div{
+    min-width: 15px;
+    min-height: 15px;
+}
+.active{
+    background-color: #1907EC
+}
+
+.form_ul li p{
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 16px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+color: #1907EC;
+}
+.form_input{
+    width: 100%;
+    padding: 10px 10px;
+    background-color: #F3F3F3;
+    border-radius: 5px;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 16px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+color: #1907EC;
+border: 2px solid  #1907EC4D;
+outline: none;
+
+
+
+
+}
+
+.other_input{
+    border: none;
+    border-radius: 0px;
+    border-bottom:2px solid  #1907EC4D ;
+    background-color: #fff;
+    outline: none;
+}
+.other_input:focus{
+    border-bottom: 2px solid  #1907EC;
+}
+.form_button {
+    width: 100%;
+    padding: 20px 60px 20px 60px;
+    gap: 10px;
+    border-radius: 200px;
+    opacity: 0px;
+    background-color: #1907ec;
+    border: none;
+    font-family: 'EdgecuttingLiteMedium';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: center;
+
+    color: #fff;
+
+    display: block;
+    margin: 0 auto;
+}
+.form_button:hover {
+    background-color: #756bfe;
+}
+@media screen and (max-width: 550px) {
+    label p{
+    font-family: "EdgecuttingLiteMedium";
+font-size: 14px;
+font-weight: 400;
+line-height: 15.2px;
+text-align: left;
+color: #1907EC4D;
+
+
+
+}
+
+.form_div{
+    padding: 10px 10px;
+}
+.form_ul{
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form_ul li{
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.circle{
+    min-width: 22px;
+    min-height: 22px;
+    border: 2px solid #1907EC;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.square{
+    min-width: 22px;
+    min-height: 22px;
+    border: 2px solid #1907EC;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle div{
+    min-width: 13px;
+    min-height: 13px;
+    border-radius: 50%;
+
+}
+.child_div{
+    min-width: 13px;
+    min-height: 13px;
+}
+.active{
+    background-color: #1907EC
+}
+
+.form_ul li p{
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 14px;
+font-weight: 400;
+line-height: 15.2px;
+text-align: left;
+color: #1907EC;
+}
+}
