@@ -122,7 +122,7 @@ const Questionnaire = () => {
                 required
                 className="form_input other_input"
                 style={{ marginTop: "10px" }}
-                placeholder="Your Answer"
+                placeholder="Yoshingizni kiriting"
               />
             </label>
           </div>
@@ -1334,7 +1334,7 @@ const Questionnaire = () => {
                 required
                 className="form_input other_input"
                 style={{ marginTop: "10px" }}
-                placeholder="Your Answer"
+                placeholder="1,2,3,4,5"
               />
             </label>
           </div>

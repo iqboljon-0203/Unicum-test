@@ -35,12 +35,16 @@ color: #1907EC4D;
 .form_div{
     padding: 10px 10px;
 }
+
 .form_ul{
     width: 100%;
-    padding: 10px 0px;
+    padding: 20px 0px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    border-bottom: 2px solid #F32044;
+
+
 }
 .form_ul li{
     width: 100%;
@@ -122,12 +126,13 @@ outline: none;
 .other_input{
     border: none;
     border-radius: 0px;
-    border-bottom:2px solid  #1907EC4D ;
+    border-bottom:2px solid  #F32044 ;
     background-color: #fff;
     outline: none;
+    padding-top: 20px;
 }
 .other_input:focus{
-    border-bottom: 2px solid  #1907EC;
+    border-bottom: 2px solid  #f10a30;
 }
 .form_button {
     width: 100%;
@@ -147,6 +152,7 @@ outline: none;
 
     display: block;
     margin: 0 auto;
+    margin-top: 30px;
 }
 .form_button:hover {
     background-color: #756bfe;
