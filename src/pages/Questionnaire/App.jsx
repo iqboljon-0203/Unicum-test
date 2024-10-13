@@ -88,7 +88,6 @@ const Questionnaire = () => {
       });
     }
   }, [selectedKey, selected, count]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
