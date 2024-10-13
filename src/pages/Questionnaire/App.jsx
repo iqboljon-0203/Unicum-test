@@ -1091,7 +1091,7 @@ const Questionnaire = () => {
             <label>
               <p>
                 Ingliz tilini o'quv markazda yoki mustaqil o'rganishingizga
-                nimalar to'sqinlik qilgan?
+                nimalar to'sqinlik qilgan? (Bir nechta variantni tanlash mumkin)
               </p>
               <ul
                 name="obstacles"
