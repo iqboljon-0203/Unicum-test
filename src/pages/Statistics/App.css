@@ -1,0 +1,206 @@
+
+.statistics {
+    width: 100%;
+    padding: 30px 20px;
+}
+.statistics_img {
+    display: block;
+    margin: 0 auto;
+    width: 140.1px;
+    height: 35px;
+    margin-bottom: 40px;
+}
+.statistics_title {
+    font-family: "EdgecuttingLiteMedium";
+font-size: 24px;
+font-weight: 500;
+line-height: 21.6px;
+text-align: center;
+color: #1907EC;
+margin-bottom: 20px;
+
+}
+.statictics_list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.statictics_list_item_question{
+     font-family: "EdgecuttingLiteMedium";
+font-size: 20px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+color: #1907EC;
+margin-bottom: 10px;
+}
+
+.statictics_list_item div >p{
+    font-family: "EdgecuttingLiteMedium";
+font-size: 20px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+color: #1907EC;
+margin-bottom: 10px;
+padding-left: 10px;
+}
+.statics_list_item_answers_count{
+    display: inline-block;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 14px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+color: #1907EC4D;
+margin-bottom: 20px;
+}
+.statics_list_item_answers_list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 485px;
+    overflow-y: scroll;
+}
+.statics_list_item_answers_list_item{
+    padding: 10px 10px;
+    background-color: #F3F3F3;
+    border-radius: 5px;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 16px;
+font-weight: 500;
+line-height: 19.2px;
+color: #1907EC;
+
+}
+.statics_list_item_answers_list_item_percent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.statics_list_item_answers_list_item_percent p{
+    width: 45%;
+    height: 100%;
+    padding: 10px 10px;
+    background-color: #F3F3F3;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 16px;
+font-weight: 500;
+line-height: 19.2px;
+color: #1907EC;
+border-radius: 5px;
+border-right: 2px solid #1907EC4D;
+ white-space: nowrap;
+  overflow-x: hidden;  
+
+}
+.progress-wrapper {
+    width: 100%;
+    background-color: #efefef;
+    height: 20px;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.progress-wrapper span{
+    color: #1907EC;
+}
+.progress-inner {
+    height: 100%;
+    background-color: #f32044;
+    transition: width 0.5s ease;
+    border-radius: 0px;
+}
+.statistics_button {
+    width: 100%;
+    padding: 20px 60px 20px 60px;
+    gap: 10px;
+    border-radius: 200px;
+    opacity: 0px;
+    background-color: #1907ec;
+    border: none;
+    font-family: 'EdgecuttingLiteMedium';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.2px;
+    text-align: center;
+
+    color: #fff;
+
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.statistics_button:hover {
+    background-color: #756bfe;
+}
+@media screen and (max-width: 550px) {
+    .statictics_list_item_question{
+    font-family: "EdgecuttingLiteMedium";
+font-size: 16px;
+font-weight: 400;
+line-height: 16.2px;
+text-align: left;
+color: #1907EC;
+
+
+
+}
+.statics_list_item_answers_list_item{
+    padding: 10px 10px;
+    background-color: #F3F3F3;
+    border-radius: 5px;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 14px;
+font-weight: 500;
+line-height: 16.2px;
+color: #1907EC;
+
+}
+.statics_list_item_answers_list_item_percent p{
+    width: 40%;
+    height: 100%;
+    padding: 10px 10px;
+    background-color: #F3F3F3;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 14px;
+font-weight: 500;
+line-height: 16.2px;
+color: #1907EC;
+border-radius: 5px;
+border-right: 2px solid #1907EC4D;
+
+}
+.statictics_list_item div >p{
+    font-family: "EdgecuttingLiteMedium";
+font-size: 14px;
+font-weight: 500;
+line-height: 16.2px;
+text-align: left;
+color: #1907EC;
+margin-bottom: 10px;
+padding-left: 10px;
+}
+.progress-wrapper span{
+    color: #1907EC;
+    font-size: 12px;
+font-weight: 300;
+line-height: 12.2px;
+}
+.statics_list_item_answers_count{
+     width: 100%;
+    font-family: "EdgecuttingLiteMedium";
+font-size: 13px;
+font-weight: 500;
+line-height: 14.2px;
+text-align: left;
+color: #1907EC4D;
+margin-bottom: 20px;
+}
+}

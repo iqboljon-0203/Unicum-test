@@ -8,7 +8,6 @@ export const submitForm = createAsyncThunk('form/submitForm', async (formData, {
     const response = await axios.post('https://unicum.usat.uz/api/v1/users/survey/create/', formData);
     if (response.status === 200) {
         // Telegram WebApp ni yopish
-        
         if (window.Telegram && window.Telegram.WebApp) {
           window.Telegram.WebApp.close();          
         }
