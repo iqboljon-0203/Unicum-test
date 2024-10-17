@@ -38,7 +38,7 @@ const HomePage = () => {
                   Sizga mos kurslarni taklif qilishimiz uchun bilim darajangizni
                   aniqlang
               </p>
-              <Link to="/degree">
+              <Link to="/statistics">
                   <button
                       onClick={() => buttonClicked()}
                       className="home_button"
