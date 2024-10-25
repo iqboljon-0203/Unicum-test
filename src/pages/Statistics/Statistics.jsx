@@ -5,7 +5,6 @@ import { useDispatch,useSelector } from 'react-redux';
 import { fetchQuestionAnswers } from "../../features/getAllAnswers/getAllQuestionAnswersSlice";
 const StatisticsPage = () => {
   const dispatch = useDispatch();
-  const progressPercentage=0;
    const handleClose = () => {
         window.Telegram.WebApp.close();
     };
@@ -15,7 +14,6 @@ const StatisticsPage = () => {
   }, [dispatch]);
 
   const {answers}=useSelector((state)=>state.getAllAnswers);
-  console.log(answers);
   
     // Skriptni qo'shish
     useEffect(() => {
